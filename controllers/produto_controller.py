@@ -27,6 +27,10 @@ def cadastrar_produto():
         if imagem_file:
             filename = secure_filename(imagem_file.filename)
             caminho_imagem = f"images/{filename}"
+
+            # 🔧 Garante que a pasta static/images exista
+            os.makedirs(os.path.join("static", "images"), exist_ok=True)
+
             # Salva a imagem na pasta static/images
             imagem_file.save(os.path.join("static", caminho_imagem))
 
@@ -53,6 +57,10 @@ def editar_produto(id):
         if imagem_file:
             filename = secure_filename(imagem_file.filename)
             caminho_imagem = f"images/{filename}"
+
+            # 🔧 Garante que a pasta static/images exista
+            os.makedirs(os.path.join("static", "images"), exist_ok=True)
+
             imagem_file.save(os.path.join("static", caminho_imagem))
             produto.imagem = caminho_imagem
 
